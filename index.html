@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Detection</title>
+    <style>
+        .message {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Face Detection</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="imageInput" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
+    <div id="imageContainer"></div>
+    <div id="successMessage" class="message">Successfully uploaded with detected face.</div>
+    <div id="errorMessage" class="message">Error: No face detected in the uploaded image.</div>
+
+    <script src="face-api.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
