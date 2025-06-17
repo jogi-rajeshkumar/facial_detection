@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Detection Logs</h2>
+
+{% if records %}
+    {% set grouped = {} %}
+    {% for row in records %}
+        {% set date_key = row.timestamp[:10] %}
+        {% if date_key not in grouped %}
+            {% set _ = grouped.update({date_key: []}) %}
+        {% endif %}
+        {% set _ = grouped[date_key].append(row) %}
+    {% endfor %}
+
+    {% for day, day_records in grouped.items() %}
+        <h3 style="margin-top: 30px; color: #2c3e50;">📅 {{ day }}</h3>
+        <div class="card-container">
+            {% for row in day_records %}
+            <div class="log-card">
+                <img src="{{ row.image_base64 }}" alt="Face Image">
+                <div class="log-meta">
+                    <p><strong>Timestamp:</strong> {{ row.timestamp }}</p>
+                    <p><strong>Age:</strong> {{ row.age }}</p>
+                    <p><strong>Gender:</strong> {{ row.gender }}</p>
+                    <p><strong>Bounding Box:</strong><br>{{ row.box }}</p>
+                    <p><strong>Expressions:</strong></p>
+                    <ul>
+                        {% for emotion, score in row.emotions.items() %}
+                        <li>{{ emotion }}: {{ score | round(2) }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No detection logs found.</p>
+{% endif %}
+
+<style>
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.log-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.log-card:hover {
+    transform: scale(1.02);
+}
+
+.log-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.log-meta {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.log-meta ul {
+    padding-left: 16px;
+    margin: 0;
+}
+</style>
+{% endblock %}

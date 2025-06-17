@@ -1,0 +1,8 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Live Face Detection</h2>
+<video id="videoInput" width="720" height="560" autoplay muted></video>
+<canvas id="overlay" width="720" height="560" style="position:absolute;"></canvas>
+<script defer src="/static/js/live.js"></script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Upload Face Detection</h2>
+
+<form id="uploadForm">
+    <input type="file" id="imageInput" accept="image/*" required>
+    <button type="submit">Detect Faces</button>
+</form>
+
+<div class="image-wrapper">
+    <img id="uploadedImage" alt="Uploaded Image" />
+    <canvas id="uploadCanvas"></canvas>
+</div>
+
+<div id="faceList">
+    <h3>Detected Faces:</h3>
+    <div id="facesGrid" class="face-grid"></div>
+</div>
+
+<script defer src="/static/js/upload.js"></script>
+{% endblock %}

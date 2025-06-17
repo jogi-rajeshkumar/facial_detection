@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title or "Face Detection App" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/face-api.min.js') }}"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">FaceDetect</div>
+        <div class="menu">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('live') }}">Live Detection</a>
+            <a href="{{ url_for('upload') }}">Upload</a>
+            <a href="{{ url_for('logs') }}">Logs</a>
+        </div>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
