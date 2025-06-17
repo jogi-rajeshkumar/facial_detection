@@ -21,10 +21,10 @@ FaceDetect is a full-stack web application that uses **face-api.js** to detect f
 ![Live](screenshots/Live_Detection.png)
 
 ### 🖼️ Upload Detection Interface
-![Upload Start](/home/rajeshkumarjogi/Desktop/facial_detection/screenshots/Upload_Detection.png)
+![Upload Start](screenshots/Upload_Detection.png)
 
 ### 📷 Upload Result (Faces Detected & Cropped)
-![Upload Result](/home/rajeshkumarjogi/Desktop/facial_detection/screenshots/Upload_Results.png)
+![Upload Result](screenshots/Upload_Results.png)
 
 ### 📊 Logs Page - Daywise View
 ![Logs Group 1](screenshots/Logs1.png)
